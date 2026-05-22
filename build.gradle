@@ -1,0 +1,4 @@
+plugins {
+    // Pinned to a widely available AGP stable line for local and GitHub Actions builds.
+    id 'com.android.application' version '8.4.2' apply false
+}

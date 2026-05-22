@@ -1,0 +1,7 @@
+# Keep repository text-only for platforms that reject binary diffs.
+* text=auto
+
+# Treat common binary outputs as binary and keep them out of diffs.
+*.apk binary
+*.keystore binary
+*.jks binary
