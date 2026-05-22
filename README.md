@@ -103,6 +103,11 @@ Workflow: `.github/workflows/android-build.yml`
 2. Tap **Open Accessibility Settings** and enable service.
 3. Tap **Grant Overlay Permission** and allow it.
 4. Open TikTok and use floating controls.
+## Setup
+1. Open app.
+2. Grant overlay permission.
+3. Enable accessibility service for this app.
+4. Open TikTok and enable `Start` in floating control.
 
 ## Notes
 TikTok UI can vary by version/region/device. If no time text is exposed to accessibility tree, end detection may require a per-device heuristic.
