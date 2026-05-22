@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TikTok Auto Scroll</string>
+    <string name="accessibility_service_description">Detects TikTok playback progress and swipes automatically when video ends.</string>
+</resources>
