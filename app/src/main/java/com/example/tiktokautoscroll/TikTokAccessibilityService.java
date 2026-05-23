@@ -26,7 +26,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TikTokAccessibilityService extends AccessibilityService {
-    private static final String TIKTOK_PACKAGE = "com.zhiliaoapp.musically";
+    private static final String TIKTOK_PACKAGE_LEGACY = "com.zhiliaoapp.musically";
+    private static final String TIKTOK_PACKAGE_US = "com.ss.android.ugc.trill";
     private static final String PREF_ENABLED = "enabled";
     private static final String PREF_DIRECTION = "direction"; // up | down
 
@@ -63,7 +64,7 @@ public class TikTokAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if (event.getPackageName() == null || !TIKTOK_PACKAGE.contentEquals(event.getPackageName())) {
+        if (!isTikTokPackage(event.getPackageName())) {
             return;
         }
         if (!isEnabled()) {
@@ -148,12 +149,19 @@ public class TikTokAccessibilityService extends AccessibilityService {
         return prefs.getBoolean(PREF_ENABLED, false);
     }
 
+    private boolean isTikTokPackage(CharSequence packageName) {
+        if (packageName == null) {
+            return false;
+        }
+        return TIKTOK_PACKAGE_LEGACY.contentEquals(packageName)
+                || TIKTOK_PACKAGE_US.contentEquals(packageName);
+    }
+
     private void performSwipe() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             return;
         }
-        WindowManager.LayoutParams lp = (WindowManager.LayoutParams) overlayView.getLayoutParams();
-        int width = getResources().getDisplayMetrics().widthPixels;
+                int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
 
         float x = width / 2f;
