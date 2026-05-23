@@ -20,14 +20,27 @@ This repository includes Gradle Wrapper (`./gradlew`) pinned to Gradle 8.14.4.
 
 
 ## If your platform rejects binary files
-Some Git platforms/tools reject binary diffs (for example `gradle-wrapper.jar`).
-If you see `Binary files are not supported`, run this once after clone:
+If your Git host blocks binary files, keep `gradle-wrapper.jar` out of Git.
+This repository is configured to regenerate the wrapper locally/CI instead.
+
+After clone, run once:
 
 ```bash
 gradle wrapper --gradle-version 8.14.4 --no-validate-url
+chmod +x gradlew
 ```
 
-This regenerates `gradle/wrapper/gradle-wrapper.jar` locally so `./gradlew` works.
+Then build as usual with `./gradlew`.
+
+## If push is rejected (common fix)
+If `git push` fails because generated files were included (for example `build/`), clean and commit again:
+
+```bash
+rm -rf build app/build
+git add -A
+git commit -m "chore: remove generated build artifacts"
+git push
+```
 
 ## Build from terminal
 ```bash
