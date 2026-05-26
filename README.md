@@ -1,13 +1,13 @@
-# TikTok Auto Scroll (Android, Java)
+# YouTube Shorts Auto Scroll (Android, Java)
 
-Accessibility + floating overlay app that auto-swipes TikTok when a video ends.
+Accessibility + floating overlay app that auto-swipes YouTube Shorts at a fixed interval while enabled.
 
 ## Features
-- Runs on top of official TikTok (`com.zhiliaoapp.musically`).
+- Runs on top of official YouTube app (`com.google.android.youtube`) Shorts feed.
 - Floating control with:
   - Start/Pause auto-scroll
-  - Switch swipe direction (Up/Down)
-- Detects end-of-video using visible countdown/time text in TikTok's UI.
+  - Scroll direction is fixed to Up
+- Uses a fixed interval swipe engine for YouTube Shorts (more reliable than timer text parsing).
 
 ## One-click Android Studio setup
 1. Install Android Studio (latest stable) with Android SDK Platform 34.
@@ -20,14 +20,27 @@ This repository includes Gradle Wrapper (`./gradlew`) pinned to Gradle 8.14.4.
 
 
 ## If your platform rejects binary files
-Some Git platforms/tools reject binary diffs (for example `gradle-wrapper.jar`).
-If you see `Binary files are not supported`, run this once after clone:
+If your Git host blocks binary files, keep `gradle-wrapper.jar` out of Git.
+This repository is configured to regenerate the wrapper locally/CI instead.
+
+After clone, run once:
 
 ```bash
 gradle wrapper --gradle-version 8.14.4 --no-validate-url
+chmod +x gradlew
 ```
 
-This regenerates `gradle/wrapper/gradle-wrapper.jar` locally so `./gradlew` works.
+Then build as usual with `./gradlew`.
+
+## If push is rejected (common fix)
+If `git push` fails because generated files were included (for example `build/`), clean and commit again:
+
+```bash
+rm -rf build app/build
+git add -A
+git commit -m "chore: remove generated build artifacts"
+git push
+```
 
 ## Build from terminal
 ```bash
@@ -102,12 +115,12 @@ Workflow: `.github/workflows/android-build.yml`
 1. Open the app.
 2. Tap **Open Accessibility Settings** and enable service.
 3. Tap **Grant Overlay Permission** and allow it.
-4. Open TikTok and use floating controls.
+4. Open YouTube Shorts and use floating controls.
 ## Setup
 1. Open app.
 2. Grant overlay permission.
 3. Enable accessibility service for this app.
-4. Open TikTok and enable `Start` in floating control.
+4. Open YouTube Shorts and enable `Start` in floating control.
 
 ## Notes
-TikTok UI can vary by version/region/device. If no time text is exposed to accessibility tree, end detection may require a per-device heuristic.
+YouTube Shorts UI can vary by version/region/device. If swipe cadence feels too fast/slow, we can tune the interval in code.

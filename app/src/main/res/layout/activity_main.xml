@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Enable accessibility and overlay permissions, then open TikTok."
+        android:text="Enable accessibility and overlay permissions, then open YouTube Shorts."
         android:textSize="16sp" />
 
     <Button
