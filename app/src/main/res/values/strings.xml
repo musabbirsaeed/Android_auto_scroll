@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">TikTok Auto Scroll</string>
-    <string name="accessibility_service_description">Detects TikTok playback progress and swipes automatically when video ends.</string>
+    <string name="app_name">YouTube Shorts Auto Scroll</string>
+    <string name="accessibility_service_description">Auto-scrolls YouTube Shorts by swiping at a fixed interval while enabled.</string>
 </resources>
