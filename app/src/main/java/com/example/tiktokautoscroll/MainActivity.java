@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Button openAccessibility = findViewById(R.id.openAccessibility);
         Button openOverlay = findViewById(R.id.openOverlay);
 
-        statusText.setText("1) Enable accessibility service. 2) Grant overlay permission. 3) Open TikTok and use the floating control.");
+        statusText.setText("1) Enable accessibility service. 2) Grant overlay permission. 3) Open YouTube Shorts and use the floating control.");
 
         openAccessibility.setOnClickListener(v -> {
             Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);

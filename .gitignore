@@ -3,3 +3,7 @@
 /keystore.properties
 *.jks
 *.keystore
+# Keep Gradle wrapper jar untracked for hosts that reject binaries
+/gradle/wrapper/gradle-wrapper.jar
+/build/
+/app/build/
