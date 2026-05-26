@@ -6,4 +6,5 @@
     android:canPerformGestures="true"
     android:notificationTimeout="120"
     android:packageNames="com.google.android.youtube"
+    android:packageNames="com.zhiliaoapp.musically,com.ss.android.ugc.trill"
     android:description="@string/accessibility_service_description" />
