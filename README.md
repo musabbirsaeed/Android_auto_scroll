@@ -42,6 +42,16 @@ git commit -m "chore: remove generated build artifacts"
 git push
 ```
 
+## If push is rejected (common fix)
+If `git push` fails because generated files were included (for example `build/`), clean and commit again:
+
+```bash
+rm -rf build app/build
+git add -A
+git commit -m "chore: remove generated build artifacts"
+git push
+```
+
 ## Build from terminal
 ```bash
 ./gradlew clean assembleDebug
