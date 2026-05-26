@@ -28,6 +28,8 @@ import java.util.regex.Pattern;
 
 public class TikTokAccessibilityService extends AccessibilityService {
     private static final String YOUTUBE_PACKAGE = "com.google.android.youtube";
+    private static final String TIKTOK_PACKAGE_LEGACY = "com.zhiliaoapp.musically";
+    private static final String TIKTOK_PACKAGE_US = "com.ss.android.ugc.trill";
     private static final String PREF_ENABLED = "enabled";
     private static final long POLL_INTERVAL_MS = 700;
     private static final long SWIPE_COOLDOWN_MS = 1800;
@@ -68,6 +70,12 @@ public class TikTokAccessibilityService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         if (!isEnabled() || !isYouTubePackage(event.getPackageName())) return;
+        if (!isTikTokPackage(event.getPackageName())) {
+            return;
+        }
+        if (!isEnabled()) {
+            return;
+        }
         AccessibilityNodeInfo root = getRootInActiveWindow();
         if (root != null) {
             evaluateVideoEnd(root);
@@ -150,6 +158,23 @@ public class TikTokAccessibilityService extends AccessibilityService {
     private void performSwipeUp() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) return;
         int width = getResources().getDisplayMetrics().widthPixels;
+    private boolean isEnabled() {
+        return prefs.getBoolean(PREF_ENABLED, false);
+    }
+
+    private boolean isTikTokPackage(CharSequence packageName) {
+        if (packageName == null) {
+            return false;
+        }
+        return TIKTOK_PACKAGE_LEGACY.contentEquals(packageName)
+                || TIKTOK_PACKAGE_US.contentEquals(packageName);
+    }
+
+    private void performSwipe() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+            return;
+        }
+                int width = getResources().getDisplayMetrics().widthPixels;
         int height = getResources().getDisplayMetrics().heightPixels;
 
         Path path = new Path();
