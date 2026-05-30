@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Federal DataWorks logo</title>
+  <desc id="desc">A stylized F and D made from connected data nodes in blue and green.</desc>
+  <defs>
+    <linearGradient id="g" x1="24" y1="24" x2="216" y2="216" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5ec4e8" />
+      <stop offset="1" stop-color="#70d49f" />
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="54" fill="#092d3a" />
+  <path d="M66 56h95c26 0 46 20 46 45s-20 45-46 45h-39v38H66V56Zm56 39v13h35c6 0 11-2 15-6 3-3 5-7 5-12s-2-9-5-12c-4-4-9-6-15-6H96v112h26V95Z" fill="url(#g)" opacity=".95" />
+  <circle cx="70" cy="56" r="11" fill="#70d49f" />
+  <circle cx="122" cy="108" r="9" fill="#c9f6dd" />
+  <circle cx="177" cy="90" r="9" fill="#5ec4e8" />
+  <circle cx="122" cy="184" r="10" fill="#70d49f" />
+  <path d="M78 61l38 40m15 5 38-13m-47 24v55" stroke="#d9fff0" stroke-width="5" stroke-linecap="round" opacity=".6" />
+</svg>

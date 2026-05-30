@@ -134,3 +134,15 @@ Workflow: `.github/workflows/android-build.yml`
 
 ## Notes
 YouTube Shorts UI can vary by version/region/device. If swipe cadence feels too fast/slow, we can tune the interval in code.
+
+---
+
+# Federal DataWorks website
+
+A standalone static website for Federal DataWorks is available in [`website/`](website/). It includes a professional one-page marketing site, starter logo, responsive styling, contact section, and AWS hosting notes.
+
+Preview locally:
+
+```bash
+python3 -m http.server 8080 --directory website
+```
